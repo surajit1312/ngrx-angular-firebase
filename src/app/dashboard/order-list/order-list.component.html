@@ -1,1 +1,25 @@
-<p>order-list works!</p>
+<p-panel header="Orders View" [style]="{'width': '100%', 'margin': '2em'}">
+    <p-progressBar mode="indeterminate" *ngIf="loading"></p-progressBar>
+    <p-table [value]="orderList" responsiveLayout="scroll" [rows]="10" *ngIf="!loading">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Order Id</th>
+                <th>Item</th>
+                <th>Quantity</th>
+                <th>Source</th>
+                <th>Destination</th>
+                <th>Shipment</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-order>
+            <tr>
+                <td>{{order.orderId}}</td>
+                <td>{{order.item}}</td>
+                <td>{{order.quantity}}</td>
+                <td>{{order.source}}</td>
+                <td>{{order.destination}}</td>
+                <td>{{order.shipment}}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</p-panel>

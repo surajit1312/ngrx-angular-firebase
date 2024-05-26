@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from './services/user.service';
-import { User } from './models/user.model';
 
 @Component({
   selector: 'app-root',
@@ -9,16 +7,7 @@ import { User } from './models/user.model';
 })
 export class AppComponent implements OnInit {
 
-  users!: Array<User>;
+  constructor() { }
 
-  constructor(private userService: UserService) {}
-
-  ngOnInit(): void {
-    this.userService.getUserList().subscribe((list) => {
-      this.users = list.map((e) => {
-        return e.payload.doc.data() as User;
-      });
-      console.log(this.users);
-    });
-  }
+  ngOnInit(): void { }
 }
