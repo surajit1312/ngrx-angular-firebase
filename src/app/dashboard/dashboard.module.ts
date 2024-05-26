@@ -3,11 +3,15 @@ import { CommonModule } from '@angular/common';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
+import { UserListComponent } from './user-list/user-list.component';
+import { OrderListComponent } from './order-list/order-list.component';
 
 
 @NgModule({
   declarations: [
-    DashboardComponent
+    DashboardComponent,
+    UserListComponent,
+    OrderListComponent
   ],
   imports: [
     CommonModule,
