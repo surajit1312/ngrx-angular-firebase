@@ -22,3 +22,19 @@
         stroke: #ffa700;
     }
 }
+
+::ng-deep {
+    div.p-panel-header {
+        background-color: limegreen !important;
+        color: #fff !important;
+    }
+
+    .p-datatable .p-datatable-thead>tr>th {
+        background-color: coral;
+        color: #fff;
+    }
+
+    tbody.p-element.p-datatable-tbody {
+        border: 1px solid #d4d4d4;
+    }
+}
