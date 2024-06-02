@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Order } from 'src/app/models/order.model';
-import { OrderService } from 'src/app/services/order.service';
+import { Store } from '@ngrx/store';
+import { Observable, of } from 'rxjs';
+
+import { Order } from '../../models/order.model';
+import * as OrderSelectors from '../../store/selectors/order.selector';
+import * as OrderActions from '../../store/actions/order.action';
 
 @Component({
   selector: 'app-order-list',
@@ -10,20 +14,18 @@ import { OrderService } from 'src/app/services/order.service';
 export class OrderListComponent implements OnInit {
 
   orderList: Array<Order> = [];
-  loading: boolean = true;
+  orderList$: Observable<Array<Order>> = of([]);
+  loading$!: Observable<boolean>;
+  error$!: Observable<any>;
 
-  constructor(private orderService: OrderService) { }
+  constructor(private store: Store) {
+    this.orderList$ = this.store.select(OrderSelectors.selectLoadOrderList);
+    this.loading$ = this.store.select(OrderSelectors.selectOrderListLoading);
+    this.error$ = this.store.select(OrderSelectors.selectLoadOrderError);
+  }
 
   ngOnInit(): void {
-    this.loading = true;
-    this.orderService.getOrderList().subscribe((list) => {
-      setTimeout(() => {
-        this.orderList = list.map((e) => {
-          return e.payload.doc.data() as Order;
-        });
-        this.loading = false;
-      }, 5000);
-    });
+    this.store.dispatch(OrderActions.loadOrderAction());
   }
 
 }

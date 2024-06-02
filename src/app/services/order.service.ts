@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { switchMap } from 'rxjs/operators';
+import { of } from 'rxjs';
+
 import { Order } from '../models/order.model';
 
 const orderCollection: string = 'order-list';
@@ -16,7 +19,14 @@ export class OrderService {
   }
 
   getOrderList() {
-    return this.angularFirestore.collection(orderCollection).snapshotChanges();
+    return this.angularFirestore.collection(orderCollection).snapshotChanges().pipe(
+      switchMap((data: Array<Object>) => {
+        const orders: Array<Order> = data.map((order: any) => {
+          return order?.payload?.doc?.data();
+        });
+        return of(orders);
+      })
+    );
   }
 
   createOrder(order: Order) {

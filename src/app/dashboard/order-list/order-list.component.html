@@ -1,6 +1,6 @@
 <p-panel header="Orders View" [style]="{'width': '100%', 'margin': '2em'}">
-    <p-progressBar mode="indeterminate" *ngIf="loading"></p-progressBar>
-    <p-table [value]="orderList" responsiveLayout="scroll" [rows]="10" *ngIf="!loading">
+    <p-progressBar mode="indeterminate" *ngIf="(loading$ | async)"></p-progressBar>
+    <p-table [value]="(orderList$ | async)!" responsiveLayout="scroll" [rows]="10" *ngIf="!(loading$ | async)">
         <ng-template pTemplate="header">
             <tr>
                 <th>Order Id</th>

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
-import { User } from 'src/app/models/user.model';
-import { UserService } from 'src/app/services/user.service';
+
+import { User } from '../../models/user.model';
 import * as UserSelectors from '../../store/selectors/user.selector';
 import * as UserActions from '../../store/actions/user.action';
 

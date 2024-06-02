@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { User } from '../models/user.model';
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
+
+import { User } from '../models/user.model';
 
 const userCollection: string = 'user-list';
 
