@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { User } from '../models/user.model';
+import { Observable, of } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
 const userCollection: string = 'user-list';
 
@@ -15,8 +17,15 @@ export class UserService {
     return this.angularFirestore.collection(userCollection).doc(id).valueChanges();
   }
 
-  getUserList() {
-    return this.angularFirestore.collection(userCollection).snapshotChanges();
+  getUserList(): Observable<Array<User>> {
+    return this.angularFirestore.collection(userCollection).snapshotChanges().pipe(
+      switchMap((data: Array<Object>) => {
+        const users: Array<User> = data.map((user: any) => {
+          return user?.payload?.doc?.data();
+        });
+        return of(users);
+      })
+    );
   }
 
   createUser(user: User) {

@@ -16,11 +16,9 @@ export class UserListComponent implements OnInit {
 
   ngOnInit(): void {
     this.loading = true;
-    this.userService.getUserList().subscribe((list) => {
+    this.userService.getUserList().subscribe((users: Array<User>) => {
       setTimeout(() => {
-        this.userList = list.map((e) => {
-          return e.payload.doc.data() as User;
-        });
+        this.userList = users;
         this.loading = false;
       }, 5000);
     });
