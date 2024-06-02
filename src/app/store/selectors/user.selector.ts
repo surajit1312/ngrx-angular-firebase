@@ -3,12 +3,17 @@ import { UserState } from '../reducers/user.reducer';
 
 export const selectUserState = createFeatureSelector<UserState>('users');
 
-export const loadUserListSelector = createSelector(
+export const selectLoadUserList = createSelector(
     selectUserState,
     (state: UserState) => state.users
 );
 
-export const loadErrorUserListSelector = createSelector(
+export const selectUserListLoading = createSelector(
+    selectUserState,
+    (state: UserState) => state.loading
+);
+
+export const selectUserListError = createSelector(
     selectUserState,
     (state: UserState) => state.error
 );

@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { User } from '../models/user.model';
+import { User } from 'src/app/models/user.model';
 
 export const LOAD_USER_EVENT = '[UserList API] Load UserList';
 export const LOAD_USER_EVENT_SUCCESS = '[UserList API] Load UserList Success';

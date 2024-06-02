@@ -109,9 +109,21 @@
               "../node_modules/bootstrap/dist/js/bootstrap.js"
             ]
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
   },
-  "defaultProject": "ngrx-angular-firebase"
+  "defaultProject": "ngrx-angular-firebase",
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  }
 }

@@ -9,6 +9,11 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { StoreModule } from '@ngrx/store';
+import { userReducer } from './store/reducers/user.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { UserEffect } from './store/effects/user.effect';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [
@@ -20,6 +25,9 @@ import { DashboardModule } from './dashboard/dashboard.module';
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
+    StoreModule.forRoot({ users: userReducer }),
+    EffectsModule.forRoot([UserEffect]),
+    StoreDevtoolsModule.instrument({ maxAge: 25 }),
     DashboardModule
   ],
   providers: [],
