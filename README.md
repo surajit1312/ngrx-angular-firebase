@@ -1,6 +1,9 @@
 # ngrx-angular-firebase
 This project is to illustrate the workflow of firebase and angular with state management from ngrx
 
+# Project ngRx Workflow
+![NGRX_WORKFLOW_ANIMATED](https://github.com/surajit1312/ngrx-angular-firebase/assets/10763355/6c4f582d-c48c-4ef5-9be7-923b2b98ba7a)
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
